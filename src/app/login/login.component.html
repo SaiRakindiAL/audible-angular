@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-1 col-10">
+      <br />
+
+      <h3 class="text-center">Login Form</h3>
+
+      <br />
+
+      <div class="row">
+        <div
+          class="offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-xs-1 col-xs-10 formBlock"
+        >
+          <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="form-group">
+              <label>Username</label>
+              <input
+                type="text"
+                id="username"
+                placeholder="Enter a usernmae"
+                class="form-control"
+                formControlName="username"
+                #username
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  loginForm.controls['username'].invalid &&
+                  loginForm.controls['username'].dirty
+                "
+                >Enter a valid username!!</span
+              >
+            </div>
+            <div class="form-group">
+              <label for="passowrd">Password</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                class="form-control"
+                formControlName="password"
+                #password
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  loginForm.controls['password'].invalid &&
+                  loginForm.controls['password'].dirty
+                "
+                >Enter a valid password!!</span
+              >
+            </div>
+
+            <div>
+              <button
+                class="btn btn-info"
+                [disabled]="loginForm.invalid || loginForm.pristine"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+          <!-- <span *ngIf="successMessage" class="text-success">{{
+            successMessage
+          }}</span>
+          <span *ngIf="errorMessage">{{ errorMessage }}</span> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

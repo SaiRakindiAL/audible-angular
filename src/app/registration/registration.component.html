@@ -1,0 +1,133 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-1 col-10">
+      <br />
+
+      <h3 class="text-center">Registration Form</h3>
+
+      <br />
+
+      <div class="row">
+        <div
+          class="offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-xs-1 col-xs-10 formBlock"
+        >
+          <form
+            class="form"
+            [formGroup]="registrationForm"
+            (ngSubmit)="register()"
+          >
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                class="form-control"
+                formControlName="fullName"
+                placeholder="Valid - John, John Joe; Invalid - John123"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  registrationForm.controls['fullName'].invalid &&
+                  registrationForm.controls['fullName'].dirty
+                "
+                >Enter a valid full name!!</span
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="emailAddress">Email Address</label>
+              <input
+                type="email"
+                id="emailAddress"
+                placeholder="Enter a valid email"
+                class="form-control"
+                formControlName="emailAddress"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  registrationForm.controls['emailAddress'].invalid &&
+                  registrationForm.controls['emailAddress'].dirty
+                "
+                >Please enter a valid email!!</span
+              >
+            </div>
+            <div class="form-group">
+              <label>Username</label>
+              <input
+                type="text"
+                id="username"
+                placeholder="Enter a usernmae"
+                class="form-control"
+                formControlName="username"
+                [(ngModel)]="user.username"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  registrationForm.controls['username'].invalid &&
+                  registrationForm.controls['username'].dirty
+                "
+                >Enter a valid username!!</span
+              >
+            </div>
+            <div class="form-group">
+              <label for="passowrd">Password</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                class="form-control"
+                formControlName="password"
+                [(ngModel)]="password"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  registrationForm.controls['password'].invalid &&
+                  registrationForm.controls['password'].dirty
+                "
+                >Enter a valid password!!</span
+              >
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm your password"
+                class="form-control"
+                formControlName="confirmPassword"
+                [(ngModel)]="confirmPassword"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  !passwordMatch() &&
+                  registrationForm.controls['confirmPassword'].dirty
+                "
+                >Password is not matching</span
+              >
+            </div>
+            <div>
+              <button
+                class="btn btn-info"
+                [disabled]="registrationForm.invalid"
+              >
+                Create your account
+              </button>
+            </div>
+            <div *ngIf="isUsername !== null">
+              {{ userNameAvailabilityMessage }}
+            </div>
+          </form>
+          <span *ngIf="successMessage" class="text-success">{{
+            successMessage
+          }}</span>
+          <span *ngIf="errorMessage">{{ errorMessage }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
