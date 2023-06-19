@@ -1,71 +1,70 @@
-<div class="container">
-  <div class="row">
-    <div class="offset-1 col-10">
-      <br />
+<div class="login-form-container">
+  <img
+    src="https://res.cloudinary.com/ddfehs4fi/image/upload/v1687201220/pngegg_1_atmykd.png"
+    class="login-website-logo-mobile-image"
+    alt="website logo"
+  />
+  <img
+    src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-login-img.png"
+    class="login-image"
+    alt="website login"
+  />
+  <!-- <h3 class="text-center">Login Form</h3> -->
 
-      <h3 class="text-center">Login Form</h3>
+  <form class="form-container" [formGroup]="loginForm" (ngSubmit)="login()">
+    <img
+      src="https://res.cloudinary.com/ddfehs4fi/image/upload/v1687201220/pngegg_1_atmykd.png"
+      class="login-website-logo-desktop-image"
+      alt="website logo"
+    />
+    <div class="input-container">
+      <label class="input-label">Username</label>
+      <input
+        type="text"
+        id="username"
+        placeholder="Enter a usernmae"
+        class="username-input-field"
+        formControlName="username"
+        #username
+      />
+      <span
+        class="text-danger"
+        *ngIf="
+          loginForm.controls['username'].invalid &&
+          loginForm.controls['username'].dirty
+        "
+        >Enter a valid username!!</span
+      >
+    </div>
+    <div class="input-container">
+      <label for="passowrd" class="input-label">Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter your password"
+        class="password-input-field"
+        formControlName="password"
+        #password
+      />
+      <span
+        class="text-danger"
+        *ngIf="
+          loginForm.controls['password'].invalid &&
+          loginForm.controls['password'].dirty
+        "
+        >Enter a valid password!!</span
+      >
+    </div>
 
-      <br />
-
-      <div class="row">
-        <div
-          class="offset-lg-3 col-lg-6 offset-md-2 col-md-8 offset-xs-1 col-xs-10 formBlock"
-        >
-          <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
-            <div class="form-group">
-              <label>Username</label>
-              <input
-                type="text"
-                id="username"
-                placeholder="Enter a usernmae"
-                class="form-control"
-                formControlName="username"
-                #username
-              />
-              <span
-                class="text-danger"
-                *ngIf="
-                  loginForm.controls['username'].invalid &&
-                  loginForm.controls['username'].dirty
-                "
-                >Enter a valid username!!</span
-              >
-            </div>
-            <div class="form-group">
-              <label for="passowrd">Password</label>
-              <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                class="form-control"
-                formControlName="password"
-                #password
-              />
-              <span
-                class="text-danger"
-                *ngIf="
-                  loginForm.controls['password'].invalid &&
-                  loginForm.controls['password'].dirty
-                "
-                >Enter a valid password!!</span
-              >
-            </div>
-
-            <div>
-              <button
-                class="btn btn-info"
-                [disabled]="loginForm.invalid || loginForm.pristine"
-              >
-                Login
-              </button>
-            </div>
-          </form>
-          <!-- <span *ngIf="successMessage" class="text-success">{{
+    <button
+      class="login-button"
+      [disabled]="loginForm.invalid || loginForm.pristine"
+    >
+      Login
+    </button>
+  </form>
+  <!-- <span *ngIf="successMessage" class="text-success">{{
             successMessage
           }}</span>
           <span *ngIf="errorMessage">{{ errorMessage }}</span> -->
-        </div>
-      </div>
-    </div>
-  </div>
 </div>

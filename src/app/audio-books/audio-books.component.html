@@ -9,113 +9,117 @@
     Search
   </button>
 </div>  -->
-<div class="input-search-bar">
-  <input
-    type="search"
-    value=""
-    class="input-search"
-    [(ngModel)]="searchValue"
-    (keyup.enter)="search()"
-    placeholder="Search audio books..."
-  />
-  <button (click)="search()">
-    <svg
-      class="search-icon"
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
-      fill="#464646"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M12.8645 11.3208H12.0515L11.7633 11.0429C12.7719 9.86964 13.3791 8.34648 13.3791 6.68954C13.3791 2.99485 10.3842 0 6.68954 0C2.99485 0 0 2.99485 0 6.68954C0 10.3842 2.99485 13.3791 6.68954 13.3791C8.34648 13.3791 9.86964 12.7719 11.0429 11.7633L11.3208 12.0515V12.8645L16.4666 18L18 16.4666L12.8645 11.3208ZM6.68954 11.3208C4.12693 11.3208 2.05832 9.25214 2.05832 6.68954C2.05832 4.12693 4.12693 2.05832 6.68954 2.05832C9.25214 2.05832 11.3208 4.12693 11.3208 6.68954C11.3208 9.25214 9.25214 11.3208 6.68954 11.3208Z"
-      />
-    </svg>
-  </button>
-</div>
-<div>
-  <button>Add to cart</button>
-  <p *ngIf="cartItems.length > 0">{{ cartItems.length }}</p>
-</div>
 
-<select
-  [(ngModel)]="selectedSortOption"
-  (ngModelChange)="sortItems()"
-  class="dropdown-toggle"
->
-  <option value="" disabled>Sort By</option>
-  <option value="author">Author</option>
-  <option value="price">Price</option>
-  <option value="rating">Rating</option>
-  <option value="title">Title</option>
-  <option value="releaseDate">Release Date</option>
-</select>
-
-<div *ngIf="searchResults.length == 0; else displayAudioResults">
-  <ul class="audio-books-container">
-    <li *ngFor="let audio of audioBooks" class="similar-product-item">
-      <img
-        src="{{ audio.img_src }}"
-        class="similar-product-image"
-        alt="{{ audio.title }}"
-      />
-      <br />
-      <p class="similar-product-title">{{ audio.title }}</p>
-      <p class="similar-products-brand">{{ audio.description }}</p>
-      <p class="">Author: {{ audio.author }}</p>
-      <p>Release Date: {{ audio.releaseDate | date }}</p>
-      <p>Price: {{ audio.price | currency : "INR" }}</p>
-      <div class="similar-product-price-rating-container">
-        <p class="similar-product-price">Genre: {{ audio.genre }}</p>
-        <div class="similar-product-rating-container">
-          <p class="similar-product-rating">{{ audio.rating }}</p>
-          <img
-            src="https://assets.ccbp.in/frontend/react-js/star-img.png"
-            alt="star"
-            class="similar-product-star"
-          />
-        </div>
-      </div>
-      <button
-        type="button"
-        class="button add-to-cart-btn"
-        (click)="addToCart(audio)"
+<div class="audio-sections">
+  <div class="input-search-bar">
+    <input
+      type="search"
+      value=""
+      class="input-search"
+      [(ngModel)]="searchValue"
+      (keyup.enter)="search()"
+      placeholder="Search audio books..."
+    />
+    <button (click)="search()">
+      <svg
+        class="search-icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="#464646"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        ADD TO CART
-      </button>
-    </li>
-  </ul>
-</div>
+        <path
+          d="M12.8645 11.3208H12.0515L11.7633 11.0429C12.7719 9.86964 13.3791 8.34648 13.3791 6.68954C13.3791 2.99485 10.3842 0 6.68954 0C2.99485 0 0 2.99485 0 6.68954C0 10.3842 2.99485 13.3791 6.68954 13.3791C8.34648 13.3791 9.86964 12.7719 11.0429 11.7633L11.3208 12.0515V12.8645L16.4666 18L18 16.4666L12.8645 11.3208ZM6.68954 11.3208C4.12693 11.3208 2.05832 9.25214 2.05832 6.68954C2.05832 4.12693 4.12693 2.05832 6.68954 2.05832C9.25214 2.05832 11.3208 4.12693 11.3208 6.68954C11.3208 9.25214 9.25214 11.3208 6.68954 11.3208Z"
+        />
+      </svg>
+    </button>
+  </div>
+  <div>
+    <button>Add to cart</button>
+    <p *ngIf="cartItems.length > 0">{{ cartItems.length }}</p>
+  </div>
 
-<ng-template #noResults>
-  <!-- <p>No Audio Books Found Found</p> -->
-</ng-template>
+  <select
+    [(ngModel)]="selectedSortOption"
+    (ngModelChange)="sortItems()"
+    class="dropdown-toggle"
+  >
+    <option value="" disabled>Sort By</option>
+    <option value="author">Author</option>
+    <option value="price">Price</option>
+    <option value="rating">Rating</option>
+    <option value="title">Title</option>
+    <option value="releaseDate">Release Date</option>
+  </select>
 
-<ng-template #displayAudioResults>
-  <ul class="audio-books-container">
-    <li *ngFor="let audio of searchResults" class="similar-product-item">
-      <img
-        src="{{ audio.img_src }}"
-        class="similar-product-image"
-        alt="{{ audio.title }}"
-      />
-      <br />
-      <p class="similar-product-title">{{ audio.title }}</p>
-      <p class="similar-products-brand">{{ audio.description }}</p>
-      <p class="">Author: {{ audio.author }}</p>
-      <p>Release Date: {{ audio.releaseDate | date }}</p>
-      <div class="similar-product-price-rating-container">
-        <p class="similar-product-price">Genre: {{ audio.genre }}</p>
-        <div class="similar-product-rating-container">
-          <p class="similar-product-rating">{{ audio.rating }}</p>
+  <div *ngIf="searchResults.length == 0; else displayAudioResults">
+    <ul class="audios-list">
+      <a class="link-item" *ngFor="let audio of audioBooks">
+        <li class="audio-item">
           <img
-            src="https://assets.ccbp.in/frontend/react-js/star-img.png"
-            alt="star"
-            class="similar-product-star"
+            src="{{ audio.img_src }}"
+            class="thumbnail"
+            alt="{{ audio.title }}"
           />
+          <p class="title">{{ audio.title }}</p>
+          <!-- <p class="similar-products-brand">{{ audio.description }}</p> -->
+          <p class="author">Author: {{ audio.author }}</p>
+          <p class="author">Release Date: {{ audio.releaseDate | date }}</p>
+          <p class="author">Genre: {{ audio.genre }}</p>
+          <div class="order-details">
+            <p class="price">Price: {{ audio.price | currency : "INR" }}</p>
+            <div class="rating-container">
+              <p class="rating">{{ audio.rating }}</p>
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/star-img.png"
+                alt="star"
+                class="star"
+              />
+            </div>
+          </div>
+          <button
+            type="button"
+            class="button add-to-cart-btn"
+            (click)="addToCart(audio)"
+          >
+            ADD TO CART
+          </button>
+        </li>
+      </a>
+    </ul>
+  </div>
+
+  <ng-template #noResults>
+    <!-- <p>No Audio Books Found Found</p> -->
+  </ng-template>
+
+  <ng-template #displayAudioResults>
+    <ul class="audio-books-container">
+      <li *ngFor="let audio of searchResults" class="similar-product-item">
+        <img
+          src="{{ audio.img_src }}"
+          class="similar-product-image"
+          alt="{{ audio.title }}"
+        />
+        <br />
+        <p class="similar-product-title">{{ audio.title }}</p>
+        <p class="similar-products-brand">{{ audio.description }}</p>
+        <p class="">Author: {{ audio.author }}</p>
+        <p>Release Date: {{ audio.releaseDate | date }}</p>
+        <div class="similar-product-price-rating-container">
+          <p class="similar-product-price">Genre: {{ audio.genre }}</p>
+          <div class="similar-product-rating-container">
+            <p class="similar-product-rating">{{ audio.rating }}</p>
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/star-img.png"
+              alt="star"
+              class="similar-product-star"
+            />
+          </div>
+          <p>{{ audio.price }}</p>
         </div>
-        <p>{{ audio.price }}</p>
-      </div>
-    </li>
-  </ul>
-</ng-template>
+      </li>
+    </ul>
+  </ng-template>
+</div>

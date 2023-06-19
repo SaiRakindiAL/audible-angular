@@ -6,6 +6,6 @@ export class AudioBooks {
   genre!: string;
   rating!: number;
   description!: string;
-  releaseDate!: Date;
+  releaseDate!: Date | string;
   price!: number;
 }
