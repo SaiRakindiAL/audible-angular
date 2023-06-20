@@ -11,6 +11,7 @@ import { AudioBookDetailsComponent } from './audio-book-details/audio-book-detai
 import { RegistrationServiceService } from './registration/registration-service.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AudioCartComponent } from './audio-cart/audio-cart.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     RegistrationComponent,
     AudioBooksComponent,
     AudioBookDetailsComponent,
+    AudioCartComponent,
   ],
   imports: [
     BrowserModule,
