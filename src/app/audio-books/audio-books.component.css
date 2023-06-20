@@ -119,6 +119,96 @@
   margin-bottom: 3px;
 }
 
+.search-sort-by-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 20px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .search-sort-by-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 50px 30px 50px 0;
+  }
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  padding-left: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 16px;
+}
+
+.search-input-container:hover {
+  outline: 1px solid #fc4d0f;
+}
+
+.search-input {
+  background-color: #f1f5f9;
+  color: #0f172a;
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  flex-grow: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .search-input {
+    width: 300px;
+  }
+}
+
+.search-icon {
+  color: #fc4d0f;
+  width: 20px;
+  height: 20px;
+}
+
+.sort-by-container {
+  display: flex;
+  align-items: center;
+}
+
+.sort-by-icon {
+  font-size: 24px;
+  color: #475569;
+  margin-right: 6px;
+}
+
+.sort-by {
+  color: #475569;
+  font-family: "Roboto";
+  font-size: 16px;
+}
+
+.sort-by-select {
+  color: #475569;
+  background-color: #ffffff;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  padding: 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+.select-option {
+  color: #fc4d0f;
+  font-family: "Roboto";
+  font-size: 14px;
+  background-color: transparent;
+}
+
 @media screen and (min-width: 768px) {
   .similar-product-item {
     width: 200px;
